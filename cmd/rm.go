@@ -12,7 +12,7 @@ func init() {
 		Run: func(cmd *cobra.Command, args []string) {
 			values := map[string]string{"branch": args[0]}
 
-			sh("{{git}} push {{origin}} :refs/heads/{{branch}}", values)
+			sh("{{git}} push --no-verify {{origin}} :refs/heads/{{branch}}", values)
 			if getCurrentBranch() == args[0] {
 				sh("{{git}} checkout master", values)
 			}

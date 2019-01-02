@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/jinzhu/grb/cmd"
+	"github.com/dfed/grb/cmd"
 )
 
 func main() {

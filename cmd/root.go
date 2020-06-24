@@ -90,7 +90,6 @@ func getCurrentBranch() string {
 }
 
 func hasLocalBranch(branch string) bool {
-	result, _ := exec.Command(GitCmd, "branch", "--list", branch).Output()
-	fmt.Println(string(result))
-	return strings.TrimSpace(string(result)) != ""
+	_, err := exec.Command(GitCmd, "rev-parse", "--verify", "--quiet", "branch", ">", "/dev/null").Output()
+	return err == nil
 }

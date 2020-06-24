@@ -14,7 +14,11 @@ func init() {
 
 			sh("{{git}} push --no-verify {{origin}} :refs/heads/{{branch}}", values)
 			if getCurrentBranch() == args[0] {
-				sh("{{git}} checkout master", values)
+				if hasLocalBranch("master") {
+					sh("{{git}} checkout master", values)
+				} else {
+					sh("{{git}} checkout main", values)
+				}
 			}
 			sh("{{git}} branch -d {{branch}}", values)
 		},
